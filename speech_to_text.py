@@ -20,7 +20,7 @@ def input_text():
         while True:
             print("Talk please")
             audio_text = recorder.listen(source)
-            print("thanks ╰(*°▽°*)╯")
+            print("thanks ಠ_ಠ")
 
             try:
                 # using google speech recognition
