@@ -16,11 +16,11 @@ def input_text():
     # Reading Microphone as source
     # listening the speech and store in audio_text variable
     with sr.Microphone() as source:
-        print("Talk please")
-        audio_text = r.listen(source)
-        print("thanks ╰(*°▽°*)╯")
-
         while True:
+            print("Talk please")
+            audio_text = r.listen(source)
+            print("thanks ╰(*°▽°*)╯")
+
             try:
                 # using google speech recognition
                 print(f"Text: {r.recognize_google(audio_text)} ")
