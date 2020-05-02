@@ -1,5 +1,5 @@
 # import library:
-## pip install PyAudio
+## pip install SpeechRecognition
 ### OR
 ## pip install pipwin
 ## pipwin install pyaudio
