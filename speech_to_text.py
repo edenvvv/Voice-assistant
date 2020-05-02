@@ -30,6 +30,10 @@ def input_text():
 
 
 def translate(name):
+    """
+    import library:
+    pip install googletrans
+    """
     from googletrans import Translator
     """
     LANGUAGES:
