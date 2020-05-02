@@ -7,6 +7,7 @@ def google_search(name):
 def input_text():
     """
     import library:
+    pip install SpeechRecognition
     pip install pipwin
     pipwin install pyaudio
     """
