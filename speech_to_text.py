@@ -20,7 +20,7 @@ def input_text():
             # using google speech recognition
             print(f"Text: {r.recognize_google(audio_text)} ")
         except sr.UnknownValueError:
-            print("Sorry, I did not get that, please try again.")
+            print("Sorry, I did not get that, please try again")
 
 
 if __name__ == "__main__":
