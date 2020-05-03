@@ -53,7 +53,26 @@ def translate(name):
     return result.text
 
 
+def speech(name):
+    """
+    import library:
+    pip install pywin32
+    """
+    import win32com.client as wincl
+    speak = wincl.Dispatch("SAPI.SpVoice")
+    speak.Speak(name)
+
+
+def to_text_file(title="1", text="None"):
+    with open(f"{title}.txt", "a+") as f:
+        f.write(text)
+
+
 if __name__ == "__main__":
-    search_name = input_text()
+    # T = input_text()
+    # search_name = input_text()
     # google_search(search_name)
-    translate(search_name)
+    # translate(search_name)
+    # speech("nigger")
+    # to_text_file(T, search_name)
+    print("BLOB")
