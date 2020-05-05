@@ -1,3 +1,6 @@
+from threading import Thread
+
+
 def google_search(name):
     # import library:
     import webbrowser
@@ -54,7 +57,7 @@ def translate(name):
     return result.text
 
 
-def speech(name):
+def speech(name="BLOB"):
     """
     import library:
     pip install pywin32
@@ -89,21 +92,20 @@ def main_gui():
         window.clear()
         animSprite.draw()
 
-    """
-    start
-    """
-    speech("What do you want to do?")
-    t = input_text()
-    speech(t)
-    """
-    end
-    """
-
     pyglet.app.run()
 
 
 if __name__ == "__main__":
-    main_gui()
+    p1 = Thread(target=main_gui)
+    p2 = Thread(target=input_text)
+    p3 = Thread(target=speech)
+    p4 = Thread(target=translate)
+    p5 = Thread(target=to_text_file)
+
+    p1.start()
+    x = p2.start()
+    p3.start()
+
     # T = input_text()
     # search_name = input_text()
     # google_search(search_name)
