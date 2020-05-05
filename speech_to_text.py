@@ -69,11 +69,44 @@ def to_text_file(title="1", text="None"):
         f.write(text)
 
 
+def main_gui():
+    import pyglet
+
+    animation = pyglet.image.load_animation('BLOB.gif')
+    animSprite = pyglet.sprite.Sprite(animation)
+
+    w = animSprite.width
+    h = animSprite.height
+
+    window = pyglet.window.Window(width=w, height=h)
+
+    r, g, b, alpha = 0.5, 0.5, 0.8, 0.5
+
+    pyglet.gl.glClearColor(r, g, b, alpha)
+
+    @window.event
+    def on_draw():
+        window.clear()
+        animSprite.draw()
+
+    """
+    start
+    """
+    speech("What do you want to do?")
+    t = input_text()
+    speech(t)
+    """
+    end
+    """
+
+    pyglet.app.run()
+
+
 if __name__ == "__main__":
+    main_gui()
     # T = input_text()
     # search_name = input_text()
     # google_search(search_name)
     # translate(search_name)
     # speech("nigger")
     # to_text_file(T, search_name)
-    print("BLOB")
