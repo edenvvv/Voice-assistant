@@ -62,6 +62,7 @@ def translate(name):
     translator = Translator()
     # English -> Hebrew
     result = translator.translate(name, 'he', 'en')
+    speech(result.text)
     print(result.text)
     """
     Hebrew -> English
@@ -90,6 +91,8 @@ def to_text_file(text="None"):
 
 
 def main_speech():
+    # import library:
+    import os
     funcs = {
         "youtube": youtube_search,
         "google": google_search,
@@ -108,18 +111,23 @@ def main_speech():
         speech("Feel free to start talking")
         func_request = input_text().lower()
         funcs[request](func_request)
+        os._exit(1)
+    except KeyError:
+        speech("Sorry, We can't do this yet, but maybe we can in the future")
+        os._exit(1)
     except:
-        speech("Sorry, I did not get that, please try again")
+        speech("Sorry, Something went wrong, please try again")
+        os._exit(1)
 
 
 def main_gui():
     import pyglet
 
     animation = pyglet.image.load_animation('BLOB.gif')
-    animSprite = pyglet.sprite.Sprite(animation)
+    anim_sprite = pyglet.sprite.Sprite(animation)
 
-    w = animSprite.width
-    h = animSprite.height
+    w = anim_sprite.width
+    h = anim_sprite.height
 
     window = pyglet.window.Window(width=w, height=h)
 
@@ -130,7 +138,7 @@ def main_gui():
     @window.event
     def on_draw():
         window.clear()
-        animSprite.draw()
+        anim_sprite.draw()
 
     pyglet.app.run()
 
