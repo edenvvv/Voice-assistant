@@ -100,24 +100,23 @@ def main_speech():
         "document": to_text_file,
     }
 
-    try:
-        speech("What do you want to do?")
-        speech("You can choose a song from YouTube")
-        speech("Or Search Google")
-        speech("Or translate to Hebrew")
-        speech("Or write to document")
-        speech("Or to exit")
-        request = input_text().lower()
-        speech("Feel free to start talking")
-        func_request = input_text().lower()
-        funcs[request](func_request)
-        os._exit(1)
-    except KeyError:
-        speech("Sorry, We can't do this yet, but maybe we can in the future")
-        os._exit(1)
-    except:
-        speech("Sorry, Something went wrong, please try again")
-        os._exit(1)
+    while True:
+        try:
+            speech("What do you want to do?")
+            speech("You can choose a song from YouTube")
+            speech("Or Search Google")
+            speech("Or translate to Hebrew")
+            speech("Or write to document")
+            speech("Or to exit")
+            request = input_text().lower()
+            speech("Feel free to start talking")
+            func_request = input_text().lower()
+            funcs[request](func_request)
+            os._exit(1)
+        except KeyError:
+            speech("Sorry, We can't do this yet, but maybe we can in the future, please try again")
+        except:
+            speech("Sorry, Something went wrong, please try again")
 
 
 def main_gui():
