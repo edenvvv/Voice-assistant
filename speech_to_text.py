@@ -81,7 +81,10 @@ def speech(name="BLOB"):
     speak.Speak(name)
 
 
-def to_text_file(title="1", text="None"):
+def to_text_file(text="None"):
+    # import library:
+    from random import randint
+    title = randint(0, 100)
     with open(f"{title}.txt", "a+") as f:
         f.write(text)
 
@@ -91,15 +94,15 @@ def main_speech():
         "youtube": youtube_search,
         "google": google_search,
         "translate": translate,
-        "write to document": to_text_file,
+        "document": to_text_file,
     }
 
     try:
-        speech("What do you want to do?")
-        speech("You can choose a song from YouTube")
-        speech("or Search Google")
-        speech("Or translate to Hebrew")
-        speech("Or write to document")
+        #speech("What do you want to do?")
+        #speech("You can choose a song from YouTube")
+        #speech("Or Search Google")
+        #speech("Or translate to Hebrew")
+        #speech("Or write to document")
         speech("Or to exit")
         request = input_text().lower()
         speech("Feel free to start talking")
@@ -137,6 +140,6 @@ if __name__ == "__main__":
     p1 = Thread(target=main_gui)
     p2 = Thread(target=main_speech)
 
-    p1.setDaemon(True)
+    p2.setDaemon(True)
     p1.start()
     p2.start()
