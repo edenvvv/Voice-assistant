@@ -7,6 +7,21 @@ def google_search(name):
     webbrowser.open(f"https://www.google.com/search?q={name}")
 
 
+def youtube_search(name):
+    """
+    import library:
+    pip install youtube-search
+    """
+    import webbrowser
+    from youtube_search import YoutubeSearch
+    results = YoutubeSearch(name, max_results=1).to_json()
+    # print(results)
+    results_start = results.find("/watch?v=")  # Finds the beginning of the link
+    results = results[results_start:]  # Removes the irrelevant part of the string (without link)
+    results_end = results.find(',')  # Marking the end of the link
+    webbrowser.open(f"https://www.youtube.com{results[:results_end]}")
+
+
 def input_text():
     """
     import library:
@@ -22,16 +37,15 @@ def input_text():
     # listening the speech and store in audio_text variable
     with sr.Microphone() as source:
         while True:
-            print("Talk please")
             audio_text = recorder.listen(source)
-            print("thanks ಠ_ಠ")
+            speech("thanks")
 
             try:
                 # using google speech recognition
                 print(f"Text: {recorder.recognize_google(audio_text)} ")
-                return recorder.recognize_google(audio_text)
+                return str(recorder.recognize_google(audio_text))
             except sr.UnknownValueError:
-                print("Sorry, I did not get that, please try again.")
+                speech("Sorry, I did not get that, please try again.")
 
 
 def translate(name):
@@ -72,6 +86,29 @@ def to_text_file(title="1", text="None"):
         f.write(text)
 
 
+def main_speech():
+    funcs = {
+        "youtube": youtube_search,
+        "google": google_search,
+        "translate": translate,
+        "write to document": to_text_file,
+    }
+
+    try:
+        speech("What do you want to do?")
+        speech("You can choose a song from YouTube")
+        speech("or Search Google")
+        speech("Or translate to Hebrew")
+        speech("Or write to document")
+        speech("Or to exit")
+        request = input_text().lower()
+        speech("Feel free to start talking")
+        func_request = input_text().lower()
+        funcs[request](func_request)
+    except:
+        speech("Sorry, I did not get that, please try again")
+
+
 def main_gui():
     import pyglet
 
@@ -96,19 +133,10 @@ def main_gui():
 
 
 if __name__ == "__main__":
+
     p1 = Thread(target=main_gui)
-    p2 = Thread(target=input_text)
-    p3 = Thread(target=speech)
-    p4 = Thread(target=translate)
-    p5 = Thread(target=to_text_file)
+    p2 = Thread(target=main_speech)
 
+    p1.setDaemon(True)
     p1.start()
-    x = p2.start()
-    p3.start()
-
-    # T = input_text()
-    # search_name = input_text()
-    # google_search(search_name)
-    # translate(search_name)
-    # speech("nigger")
-    # to_text_file(T, search_name)
+    p2.start()

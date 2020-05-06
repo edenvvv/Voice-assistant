@@ -3,7 +3,10 @@
 ### OR
 ## pip install pipwin
 ## pipwin install pyaudio
+## pip install youtube-search
 
 # GUI
-## pip install pysimplegui
-### https://pypi.org/project/PySimpleGUI/
+## pip install pyglet
+
+
+### (recommended) https://pypi.org/project/PySimpleGUI/
