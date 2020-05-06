@@ -98,6 +98,7 @@ def main_speech():
         "google": google_search,
         "translate": translate,
         "document": to_text_file,
+        "exit": os._exit(0)
     }
 
     while True:
