@@ -97,8 +97,7 @@ def main_speech():
         "youtube": youtube_search,
         "google": google_search,
         "translate": translate,
-        "document": to_text_file,
-        "exit": os._exit(0)
+        "document": to_text_file
     }
 
     while True:
@@ -110,6 +109,8 @@ def main_speech():
             speech("If you want to write to document say document")
             speech("If you want to exit say exit")
             request = input_text().lower()
+            if request == "exit":
+                os._exit(0)
             speech("Feel free to start talking")
             func_request = input_text().lower()
             funcs[request](func_request)
