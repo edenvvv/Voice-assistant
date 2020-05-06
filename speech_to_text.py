@@ -98,11 +98,11 @@ def main_speech():
     }
 
     try:
-        #speech("What do you want to do?")
-        #speech("You can choose a song from YouTube")
-        #speech("Or Search Google")
-        #speech("Or translate to Hebrew")
-        #speech("Or write to document")
+        speech("What do you want to do?")
+        speech("You can choose a song from YouTube")
+        speech("Or Search Google")
+        speech("Or translate to Hebrew")
+        speech("Or write to document")
         speech("Or to exit")
         request = input_text().lower()
         speech("Feel free to start talking")
