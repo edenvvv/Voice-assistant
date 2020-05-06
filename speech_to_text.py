@@ -103,16 +103,16 @@ def main_speech():
     while True:
         try:
             speech("What do you want to do?")
-            speech("You can choose a song from YouTube")
-            speech("Or Search Google")
-            speech("Or translate to Hebrew")
-            speech("Or write to document")
-            speech("Or to exit")
+            speech("If you want to hear a song say YouTube")
+            speech("If you want to search say Google")
+            speech("If you want to translate to Hebrew say translate")  # Beta
+            speech("If you want to write to document say document")
+            speech("If you want to exit say exit")
             request = input_text().lower()
             speech("Feel free to start talking")
             func_request = input_text().lower()
             funcs[request](func_request)
-            os._exit(1)
+            os._exit(0)
         except KeyError:
             speech("Sorry, We can't do this yet, but maybe we can in the future, please try again")
         except:
@@ -120,6 +120,10 @@ def main_speech():
 
 
 def main_gui():
+    """
+    import library:
+    pip install pyglet
+    """
     import pyglet
 
     animation = pyglet.image.load_animation('background.gif')
@@ -144,9 +148,9 @@ def main_gui():
 
 if __name__ == "__main__":
 
-    p1 = Thread(target=main_gui)
-    p2 = Thread(target=main_speech)
+    gui_thread = Thread(target=main_gui)
+    speech_thread = Thread(target=main_speech)
 
-    p2.setDaemon(True)
-    p1.start()
-    p2.start()
+    speech_thread.setDaemon(True)
+    gui_thread.start()
+    speech_thread.start()
