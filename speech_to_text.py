@@ -62,7 +62,7 @@ def translate(name):
     translator = Translator()
     # English -> Hebrew
     result = translator.translate(name, 'he', 'en')
-    speech(result.text)
+    speech(result.text) #
     print(result.text)
     """
     Hebrew -> English
@@ -122,7 +122,7 @@ def main_speech():
 def main_gui():
     import pyglet
 
-    animation = pyglet.image.load_animation('BLOB.gif')
+    animation = pyglet.image.load_animation('background.gif')
     anim_sprite = pyglet.sprite.Sprite(animation)
 
     w = anim_sprite.width
