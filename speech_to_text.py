@@ -4,7 +4,9 @@ from threading import Thread
 def google_search(name):
     # import library:
     import webbrowser
-    webbrowser.open(f"https://www.google.com/search?q={name}")
+    webbrowser.open_new("https://pbs.twimg.com/profile_images/378800000731723590/"
+                        "c56d959846a5ad50c8c450ad8d60583e_400x400.jpeg")
+    webbrowser.open_new(f"https://www.google.com/search?q={name}")
 
 
 def youtube_search(name):
@@ -19,7 +21,9 @@ def youtube_search(name):
     results_start = results.find("/watch?v=")  # Finds the beginning of the link
     results = results[results_start:]  # Removes the irrelevant part of the string (without link)
     results_end = results.find(',')  # Marking the end of the link
-    webbrowser.open(f"https://www.youtube.com{results[:results_end]}")
+    webbrowser.open_new("https://pbs.twimg.com/profile_images/378800000731723590/"
+                        "c56d959846a5ad50c8c450ad8d60583e_400x400.jpeg")
+    webbrowser.open_new(f"https://www.youtube.com{results[:results_end]}")
 
 
 def input_text():
