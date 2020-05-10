@@ -106,7 +106,7 @@ def main_speech():
 
     while True:
         try:
-            speech("What do you want to do?")
+            speech("Hello my friend. What can I do for you?")
             speech("If you want to hear a song say YouTube")
             speech("If you want to search say Google")
             speech("If you want to translate to Hebrew say translate")  # Beta
