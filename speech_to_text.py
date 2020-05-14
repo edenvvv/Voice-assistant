@@ -153,7 +153,6 @@ def main_gui():
 
 
 if __name__ == "__main__":
-
     gui_thread = Thread(target=main_gui)
     speech_thread = Thread(target=main_speech)
 
